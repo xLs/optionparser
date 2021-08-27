@@ -1,0 +1,4 @@
+#d 
+-r required 
+-m="an arg from file" 
+-m "another arg from file"
