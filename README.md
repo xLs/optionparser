@@ -54,6 +54,9 @@ Examples:
  
  example of parsing and getting arguments:
  ```c++
+ 
+  option::Options opts((option::Descriptor*)usage);
+  
   if (!opts.Parse(&argv[1], argc))	// skip first argument (module path)
   {
     printf("* option error: %s\n", opts.error_msg());
@@ -128,6 +131,7 @@ test.cmdline content:
 ```
 the '#' - character removes this argument if it was previously parsed by option parser
 
+
 the new output looks like:
 ```
 > build/Linux/option -r "musthave" -d -v -n 123 -s "hello world" -m=test -m="test 2" -m "test 3"
@@ -138,10 +142,15 @@ input multi args:
         test
         test 2
         test 3
-        *an arg from file*
-        *another arg from file*
-required input: *required*
+        an arg from file
+        another arg from file
+required input: required
 ```
+<p>
 -d was removed and thus not 'debug enabled' output is visible,
+
 -r was overriden and changed from "musthave" to "required"
+
 -m added two new parameters.
+
+</p>
